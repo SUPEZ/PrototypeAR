@@ -13,9 +13,11 @@ public class ChangeTrackingMode : MonoBehaviour
     private Text Mode;
 
     private ARPlaneManager _planeManager = null;
+    private SpawnDummyOnPlane _spawnDummyOnPlane = null;
     private ARTrackedImageManager _trackedImageManager = null;
 
     private bool _planeManagerCached = false;
+    private bool _spawnDummyOnPlaneCached = false;
     private bool _trackedImageManagerCached = false;
 
     public ARPlaneManager cachedPlaneManager
@@ -28,6 +30,19 @@ public class ChangeTrackingMode : MonoBehaviour
                 _planeManager = _sessionOrigin.GetComponent<ARPlaneManager>();
             }
             return _planeManager;
+        }
+    }
+
+    public SpawnDummyOnPlane cachedSpawnDummyOnPlane
+    {
+        get
+        {
+            if (!_spawnDummyOnPlaneCached)
+            {
+                _spawnDummyOnPlaneCached = true;
+                _spawnDummyOnPlane = _sessionOrigin.GetComponent<SpawnDummyOnPlane>();
+            }
+            return _spawnDummyOnPlane;
         }
     }
 
@@ -47,6 +62,7 @@ public class ChangeTrackingMode : MonoBehaviour
     private void Start()
     {
         cachedPlaneManager.enabled = true;
+        cachedSpawnDummyOnPlane.enabled = true;
         cachedTrackedImageManager.enabled = false;
     }
 
@@ -55,6 +71,7 @@ public class ChangeTrackingMode : MonoBehaviour
         if (cachedPlaneManager.enabled)
         {
             cachedPlaneManager.enabled = false;
+            cachedSpawnDummyOnPlane.enabled = false;
             cachedTrackedImageManager.enabled = true;
             Mode.GetComponent<Text>().text = "Tracked image mod";
         }
@@ -62,6 +79,7 @@ public class ChangeTrackingMode : MonoBehaviour
         if (cachedTrackedImageManager.enabled)
         {
             cachedPlaneManager.enabled = true;
+            cachedSpawnDummyOnPlane.enabled = true;
             cachedTrackedImageManager.enabled = false;
             Mode.GetComponent<Text>().text = "Plane mod";
         }

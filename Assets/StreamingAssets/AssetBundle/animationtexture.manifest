@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 825798266
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a1b55fdcc0507502ef6b60966d25ee39
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AnimationInstancing/Animation-Instancing/Assets/AnimationTexture/Dude_low_instancing.bytes
+- Assets/AnimationInstancing/Animation-Instancing/Assets/AnimationTexture/Unity_Model_instancing.bytes
+Dependencies: []
